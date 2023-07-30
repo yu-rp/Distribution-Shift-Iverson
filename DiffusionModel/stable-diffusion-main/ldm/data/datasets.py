@@ -15,8 +15,6 @@ from torch.utils.data import ConcatDataset
 
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 
-# TODO: 我们现在需要能够 三合一的训练数据 那么我们可以， 设计一个 就是能够分成 训练加 测试， 训练上 能够 19分割 分开之后1 做验证 输出3组loss 加准确率
-
 def get_dataset_class(dataset_name):
     """Return the dataset class with the given name."""
     if dataset_name not in globals():
@@ -130,7 +128,7 @@ class onedomainPACS:
 
     def __getitem__(self, index):
         x,y = self.dataset[index]
-        return {"image":x.permute(1,2,0) ,"txt":""}
+        return {"image":x.permute(1,2,0) ,"txt":"","y":y}
 
     def __len__(self):
         return len(self.dataset)
@@ -142,7 +140,7 @@ class threedomainPACS:
 
     def __getitem__(self, index):
         x,y = self.dataset[index]
-        return {"image":x.permute(1,2,0) ,"txt":""}
+        return {"image":x.permute(1,2,0) ,"txt":"","y":y}
 
     def __len__(self):
         return len(self.dataset)

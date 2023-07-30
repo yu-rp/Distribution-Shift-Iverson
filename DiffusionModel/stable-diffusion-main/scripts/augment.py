@@ -349,8 +349,8 @@ def main():
     base_count = len(os.listdir(sample_path)) # 有多少 sample 了
     grid_count = len(os.listdir(outpath)) - 1 # 有多少 grid了
 
-    if opt.dataset == "PACS":
-        dataset = onedomainPACS_withlabel(root = "~/Data/", test_envs = opt.domain_index, data_augmentation = False, image_size = 256)
+    if opt.dataset == "PACS_augmentation":
+        dataset = onedomainPACS(root = "~/Data/", test_envs = opt.domain_index, data_augmentation = False, image_size = 256)
         dataset, outstr = use_shuffle(dataset, "PACS", opt.domain_index[0])
     print(outstr)
     dataloader = DataLoader(
