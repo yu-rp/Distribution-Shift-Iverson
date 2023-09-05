@@ -78,7 +78,7 @@ def use_shuffle(dataset, dataset_name, domain_index):
         samples = torch.load(fullpath,map_location="cpu")
         output = f"shuffled index exists at {fullpath} and loaded"
         print("loaded samples",samples[:5])
-        samples = modebasepath(samples)
+        # samples = modebasepath(samples)
         print("base modified samples",samples[:5])
     else:
         samples = dataset.dataset.imgs
